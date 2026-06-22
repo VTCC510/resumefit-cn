@@ -2,6 +2,16 @@
 
 基于 [Reactive Resume](https://github.com/amruthpillai/reactive-resume) 二次开发的中文简历增强工具，面向中文求职场景提供简历模板、岗位匹配、项目经历润色与 PDF 导出能力。
 
+## 在线访问
+
+GitHub Pages 地址：
+
+```text
+https://vtcc510.github.io/resumefit-cn/
+```
+
+如果首次打开显示 404，请到仓库 `Settings` → `Pages`，将 `Build and deployment` 的 Source 设为 `GitHub Actions`，然后等待 Actions 中的 Pages 工作流执行完成。
+
 ## 功能亮点
 
 - 中文简历模板：A4 版式、中文信息层级、项目/经历/技能模块。
@@ -10,7 +20,7 @@
 - PDF 导出：通过浏览器打印样式导出 A4 PDF，适合本地演示和作品集展示。
 - JSON 导出：可导出当前表单数据，便于后续扩展导入能力。
 
-## 快速开始
+## 本地运行
 
 直接用浏览器打开：
 
@@ -35,6 +45,14 @@ http://localhost:4177
 ```bash
 npm test
 ```
+
+## 部署方式
+
+仓库已配置 GitHub Actions 自动部署：
+
+- 工作流文件：`.github/workflows/pages.yml`
+- 发布内容：仓库根目录静态文件
+- 触发条件：推送到 `main` 或手动运行 workflow
 
 ## 项目背景
 
