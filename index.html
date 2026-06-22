@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ResumeFit CN - 中文简历增强工具</title>
+		<link rel="stylesheet" href="./src/styles.css" />
+	</head>
+	<body>
+		<header class="app-shell no-print">
+			<div>
+				<p class="eyebrow">Reactive Resume 二开实践</p>
+				<h1>ResumeFit CN</h1>
+			</div>
+			<div class="header-actions">
+				<button id="loadSample" type="button">载入示例</button>
+				<button id="exportJson" type="button">导出 JSON</button>
+				<button id="printPdf" type="button" class="primary">导出 PDF</button>
+			</div>
+		</header>
+
+		<main class="workspace">
+			<section class="panel no-print" aria-label="简历编辑">
+				<nav class="tabs" aria-label="功能区">
+					<button class="tab active" data-tab="profile" type="button">中文简历模板</button>
+					<button class="tab" data-tab="match" type="button">岗位 JD 匹配</button>
+					<button class="tab" data-tab="polish" type="button">项目经历润色</button>
+				</nav>
+
+				<div class="tab-panel active" id="profile">
+					<div class="form-grid">
+						<label>姓名<input id="name" value="李慕" /></label>
+						<label>目标岗位<input id="title" value="前端开发工程师" /></label>
+						<label>城市<input id="location" value="上海" /></label>
+						<label>邮箱<input id="email" value="limu@example.com" /></label>
+						<label>手机<input id="phone" value="138-0000-0000" /></label>
+						<label>作品链接<input id="website" value="github.com/VTCC510/resumefit-cn" /></label>
+					</div>
+					<label>个人优势<textarea id="summary" rows="4">3 年前端开发经验，熟悉 React、TypeScript 与工程化体系，擅长将复杂业务流程沉淀为高可维护组件和可复用工具。</textarea></label>
+					<label>技能关键词<textarea id="skills" rows="3">React, TypeScript, Vite, Zustand, Tailwind CSS, Node.js, REST API, 性能优化, 前端工程化, PDF 导出</textarea></label>
+					<label>工作经历<textarea id="experience" rows="5">在业务中台团队负责招聘与员工管理模块建设，主导组件库表单能力升级，减少 35% 重复配置代码；优化大列表渲染与查询缓存，将核心页面首屏耗时从 2.8s 降至 1.4s。</textarea></label>
+				</div>
+
+				<div class="tab-panel" id="match">
+					<label>岗位 JD<textarea id="jd" rows="9">岗位要求：熟悉 React、TypeScript、前端工程化和性能优化，有复杂表单、可视化或 PDF 导出经验；能独立分析业务需求，具备良好的沟通协作与问题拆解能力。</textarea></label>
+					<button id="matchBtn" type="button" class="primary wide">开始匹配</button>
+					<div class="result-grid">
+						<div class="metric"><span id="matchScore">--</span><small>匹配分</small></div>
+						<div class="metric"><span id="hitCount">--</span><small>命中关键词</small></div>
+						<div class="metric"><span id="gapCount">--</span><small>待补强</small></div>
+					</div>
+					<div class="analysis" id="matchReport"></div>
+				</div>
+
+				<div class="tab-panel" id="polish">
+					<label>项目经历原文<textarea id="projects" rows="9">基于 Reactive Resume 做中文简历模板，增加 JD 匹配和项目润色功能，可以导出 PDF。
+负责企业后台的员工列表和表单配置，做了一些性能优化。</textarea></label>
+					<button id="polishBtn" type="button" class="primary wide">生成润色版本</button>
+					<div class="analysis" id="polishReport"></div>
+				</div>
+			</section>
+
+			<section class="resume-stage" aria-label="简历预览">
+				<article class="resume-paper" id="resumePaper">
+					<div class="resume-top">
+						<div>
+							<h2 id="previewName">李慕</h2>
+							<p id="previewTitle">前端开发工程师</p>
+						</div>
+						<ul id="previewContact"></ul>
+					</div>
+					<section>
+						<h3>个人优势</h3>
+						<p id="previewSummary"></p>
+					</section>
+					<section>
+						<h3>核心技能</h3>
+						<div class="skill-cloud" id="previewSkills"></div>
+					</section>
+					<section>
+						<h3>工作经历</h3>
+						<p id="previewExperience"></p>
+					</section>
+					<section>
+						<h3>项目经历</h3>
+						<ul class="resume-list" id="previewProjects"></ul>
+					</section>
+					<section id="previewMatchSection">
+						<h3>岗位匹配摘要</h3>
+						<p id="previewMatch">填写 JD 后生成匹配摘要。</p>
+					</section>
+				</article>
+			</section>
+		</main>
+
+		<script type="module" src="./src/app.js"></script>
+	</body>
+</html>
